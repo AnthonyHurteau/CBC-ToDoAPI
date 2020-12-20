@@ -4,14 +4,16 @@ using CBC_ToDoAPI.Domain.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace CBC_ToDoAPI.Migrations
 {
     [DbContext(typeof(CBCToDoContext))]
-    partial class CBCToDoContextModelSnapshot : ModelSnapshot
+    [Migration("20201220174545_001")]
+    partial class _001
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
