@@ -10,7 +10,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace CBC_ToDoAPI.Interface.Controllers
 {
-    [Route("api/todotask")]
+    [Route("todotask")]
     [ApiController]
     public class ToDoTaskController : ControllerBase
     {

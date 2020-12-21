@@ -7,6 +7,7 @@ using CBC_ToDoAPI.Application.ServiceLayer.Services;
 using CBC_ToDoAPI.Domain.Context;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.HttpOverrides;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -39,16 +40,21 @@ namespace CBC_ToDoAPI
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, CBCToDoContext cBCToDoContext)
         {
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
             }
+            
+            cBCToDoContext.Database.Migrate();
 
-            app.UseCors(builder => builder.WithOrigins(Configuration["AllowedOrigin"]).AllowAnyMethod().AllowAnyHeader().AllowAnyOrigin());
+            app.UseCors(x => x
+                .AllowAnyOrigin()
+                .AllowAnyMethod()
+                .AllowAnyHeader());
 
-            app.UseHttpsRedirection();
+            //app.UseHttpsRedirection();
 
             app.UseRouting();
 
